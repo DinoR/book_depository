@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  autor_id: 1
+  genre_id: 1
+  year: 1
+  sales: 1
+
+two:
+  title: MyString
+  autor_id: 1
+  genre_id: 1
+  year: 1
+  sales: 1
