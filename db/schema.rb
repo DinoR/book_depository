@@ -11,35 +11,52 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111219184010) do
+ActiveRecord::Schema.define(:version => 20111219200730) do
 
   create_table "authors", :force => true do |t|
     t.string   "first_name"
     t.string   "last_name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "book_id"
   end
 
-  create_table "autors", :force => true do |t|
-    t.string   "first_name"
-    t.string   "last_name"
+  create_table "authors_books", :force => true do |t|
+    t.integer  "author_id"
+    t.integer  "book_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "authors_genres", :force => true do |t|
+    t.integer  "author_id"
+    t.integer  "genre_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "books", :force => true do |t|
     t.string   "title"
-    t.integer  "autor_id"
-    t.integer  "genre_id"
     t.integer  "year"
     t.integer  "sales"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  create_table "books_genres", :force => true do |t|
+    t.integer  "book_id"
+    t.integer  "genre_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "genres", :force => true do |t|
     t.string   "genre"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "genres_books", :force => true do |t|
+    t.integer  "genre_id"
     t.integer  "book_id"
     t.datetime "created_at"
     t.datetime "updated_at"
