@@ -1,0 +1,20 @@
+
+
+<table class="bordered-table sort zebra-striped">
+  <thead>
+    <tr>
+      <th>Avtor</th>
+      <th>Žanri</th>
+			<th>Povprečje</th>
+    </tr>
+  </thead>
+  <tbody>
+		<% @genres.each do |genre| %>
+			<tr>
+        <td><%= genre.genre  %></td>
+        <td><%= genre.books.count %></td>
+				<td><%= @avrage %></td>
+      </tr>
+		<% end %>
+  </tbody>
+</table>

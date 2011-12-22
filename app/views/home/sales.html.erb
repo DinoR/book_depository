@@ -1,0 +1,16 @@
+<table class="bordered-table sort zebra-striped">
+  <thead>
+    <tr>
+      <th>Žanri</th>
+      <th>Prodaja</th>
+    </tr>
+  </thead>
+  <tbody>
+		<% @genres.each do |genre| %>
+			<tr>
+        <td><%= genre.genre  %></td>
+        <td><%= genre.sales %></td>
+      </tr>
+		<% end %>
+  </tbody>
+</table>

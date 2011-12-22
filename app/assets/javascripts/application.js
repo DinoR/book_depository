@@ -7,3 +7,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+$(function() {
+	$("table.sort").tablesorter({ sortList: [[1,0]] });
+});	

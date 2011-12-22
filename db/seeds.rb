@@ -1,17 +1,11 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
 Book.destroy_all
 Author.destroy_all
 Genre.destroy_all
-f = File.open('/Users/Dino/Desktop/dataset.txt')
+f = File.open('/Users/Dino/Desktop/dataset_6_A.csv')
 
 f.each_line do |line|
-  puts "------"
+  puts "======================"
+  #====================>  Razcep
   info = []
   info_raw = line.strip.split(',')
   info_raw.each do |item|
@@ -21,27 +15,36 @@ f.each_line do |line|
     end
     info.push(item)
   end
-  book = Book.create({:title => info[0], :year => info[2], :sales => info[6]})
-  name = info[1].split
-  author = Author.create({:last_name => name[0], :first_name => name[1]})
-  genre = Genre.create({:genre => info[3]},{:genre => info[4]})
-  ab = AuthorsBooks.create({:book_id => book.id, :author_id => author.id})
+  #====================>  Knjiga
+  book = Book.create({:title => info[0], :year => info[2], :sales => info[5]})
+  p "Knjiga: #{book.title}"
+  #====================>  Avtor
+  if Author.where("name = ?", info[1]).count != 0 
+    author = Author.where("name = ?", info[1]).first
+  else
+    author = Author.create({:name => info[1]})
+  end
+  p "Avtor: #{author.name}"
+  #====================>  Zanr 1
+  if Genre.where("genre = ?", info[3]).count != 0
+    genre = Genre.where("genre = ?", info[3]).first
+  else
+    genre = Genre.create({:genre => info[3]})
+  end
+  p "zanr: #{genre.genre}"
+  #====================>  Povezovalne tabele
   ag = AuthorsGenres.create({:author_id => author.id, :genre_id => genre.id})
   bg = BooksGenres.create({:genre_id => genre.id, :book_id => book.id})
-  
-  p ab
-  p ag
-  p bg
-  
-  #p info
+  #====================>  Zanr 2
+  if Genre.where("genre = ?", info[4]).count != 0
+    genre = Genre.where("genre = ?", info[4]).first
+  else
+    genre = Genre.create({:genre => info[4]})
+  end
+  p "zanr: #{genre.genre}"
+  #====================>  Povezovalne tabele
+  ag = AuthorsGenres.create({:author_id => author.id, :genre_id => genre.id})
+  bg = BooksGenres.create({:genre_id => genre.id, :book_id => book.id})
+  ab = AuthorsBooks.create({:book_id => book.id, :author_id => author.id})
+
 end
-
-
-
-
-
-
-
-
-
-# Naslov,Avtor,Leto,Žanr 1,Žanr 2,Prodaja
