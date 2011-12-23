@@ -6,11 +6,30 @@ class HomeController < ApplicationController
   
   def genre
     @genres = Genre.all
-    @avrage  = Genre.all.count.to_f / Book.all.count.to_f
+    @avrage  = Book.all.count.to_f / Genre.all.count.to_f 
   end
   
   def sales
     @genres = Genre.sales
+  end
+  def sub_sales
+    @genres = Genre.sub_sales
+  end
+  
+  def genre_chart
+    @genres = Genre.where("level = ?",1)
+    @normal = Book.sum("sales")
+  end
+  
+  def top_chart
+    @normal = Book.sum("sales")
+    @genres = Genre.where("level = ?",1)
+    @books = []
+    @genres.each do |genre|
+      genre.books.each do |book|
+        @books.push(book)
+      end
+    end
   end
   
 end

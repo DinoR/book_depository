@@ -1,9 +1,11 @@
+<% @genres.each do |genre| %>
 <div class="genre">
 	<h1>
-		Prodaja po žanru 1
+		<%= genre.genre %>
+		<%= image_tag 'spinner.gif', :class => "spinner"%>
 		<button class="btn primary show_chart">Graf</button>
 	</h1>
-	<div id="prodaja_zanri" class="top_chart"></div>
+	<div id="<%= genre.id %>" class="top_chart"></div>
 	<table class="bordered-table sort zebra-striped">
 	  <thead>
 	    <tr>
@@ -12,12 +14,13 @@
 	    </tr>
 	  </thead>
 	  <tbody>
-			<% @genres.each do |genre| %>
+			<% genre.sub_genres.each do |sub_g| %>
 				<tr>
-	        <td><%= genre.genre  %></td>
-	        <td><%= genre.sales %></td>
+	        <td><%= sub_g.genre  %></td>
+	        <td><%= sub_g.sales %></td>
 	      </tr>
 			<% end %>
 	  </tbody>
 	</table>
 	</div>
+<% end %>

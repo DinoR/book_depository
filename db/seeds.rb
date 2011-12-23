@@ -29,7 +29,7 @@ f.each_line do |line|
   if Genre.where("genre = ?", info[3]).count != 0
     genre = Genre.where("genre = ?", info[3]).first
   else
-    genre = Genre.create({:genre => info[3]})
+    genre = Genre.create({:genre => info[3], :level => 1})
   end
   p "zanr: #{genre.genre}"
   #====================>  Povezovalne tabele
@@ -39,7 +39,7 @@ f.each_line do |line|
   if Genre.where("genre = ?", info[4]).count != 0
     genre = Genre.where("genre = ?", info[4]).first
   else
-    genre = Genre.create({:genre => info[4]})
+    genre = Genre.create({:genre => info[4], :level => 2})
   end
   p "zanr: #{genre.genre}"
   #====================>  Povezovalne tabele

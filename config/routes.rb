@@ -2,6 +2,9 @@ BookDepository::Application.routes.draw do
   get 'home/index'
   get 'home/genre'
   get 'home/sales'
+  get 'home/sub_sales'
+  get 'home/genre_chart'
+  get 'home/top_chart'
   root :to => "home#index"
   # The priority is based upon order of creation:
   # first created -> highest priority.
