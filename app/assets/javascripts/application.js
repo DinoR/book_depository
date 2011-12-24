@@ -1,3 +1,8 @@
+//= require jquery
+//= require jquery_ujs
+//= require jquery.tablesort.js
+
+
 google.load("visualization", "1", {packages:["corechart"]});
 
 jQuery(document).ready(function() {
