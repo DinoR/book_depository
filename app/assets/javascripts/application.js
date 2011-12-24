@@ -1,19 +1,10 @@
-// This is a manifest file that'll be compiled into including all the files listed below.
-// Add new JavaScript/Coffee code in separate files in this directory and they'll automatically
-// be included in the compiled file accessible from http://example.com/assets/application.js
-// It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
-// the compiled file.
-//
-//= require jquery
-//= require jquery_ujs
-//= require_tree .
 google.load("visualization", "1", {packages:["corechart"]});
 
-$(function() {
+jQuery(document).ready(function() {
 	$("table.sort").tablesorter({ sortList: [[1,1]] });
 	$("button.show_chart").bind("click", function(e) {
 		e.preventDefault();
-		$(this).fadeTo("slow", 0);
+		$(this).animate({opacity: 0}, "slow", function() {$(this).hide();});
 		var data = new google.visualization.DataTable();
 		data.addColumn('string', 'Knige');
 		data.addColumn('number', 'Prodaja');
