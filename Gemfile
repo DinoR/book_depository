@@ -7,7 +7,7 @@ gem 'rails', '3.1.3'
 group :production, :staging do
   gem "pg"
 end
-
+gem 'taps'
 group :development, :test do
   gem "sqlite3-ruby", :require => "sqlite3"
   gem 'heroku'
