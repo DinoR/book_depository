@@ -37,7 +37,7 @@ class HomeController < ApplicationController
     @years_range =  Array(Book.where('year != 0').minimum("year")..Book.maximum("year"))
     @years_range.unshift(0)
     #@matrix.push(@years_range)
-    @genres = Genre.all
+    @genres = Genre.where("level = ?",1)
     @genres.each do |genre|
       genre_sales = [genre.genre]
       @years_range.each do |year|
