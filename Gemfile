@@ -10,10 +10,10 @@ end
 
 group :development, :test do
   gem "sqlite3-ruby", :require => "sqlite3"
+  gem 'heroku'
 end
 
-gem 'fastercsv'
-gem 'heroku'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
