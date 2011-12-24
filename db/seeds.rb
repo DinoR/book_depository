@@ -16,30 +16,39 @@ f.each_line do |line|
     info.push(item)
   end
   #====================>  Knjiga
-  book = Book.create({:title => info[0], :year => info[2], :sales => info[5]})
+  year = info[2]
+  year = 0 if year == ""
+  book = Book.create({:title => info[0], :year => year, :sales => info[5]})
   p "Knjiga: #{book.title}"
   #====================>  Avtor
-  if Author.where("name = ?", info[1]).count != 0 
-    author = Author.where("name = ?", info[1]).first
+  author_name = info[1]
+  author_name = "N/A" if author_name == ""
+  
+  if Author.where("name = ?", author_name).count != 0 
+    author = Author.where("name = ?", author_name).first
   else
-    author = Author.create({:name => info[1]})
+    author = Author.create({:name => author_name})
   end
   p "Avtor: #{author.name}"
   #====================>  Zanr 1
-  if Genre.where("genre = ?", info[3]).count != 0
-    genre = Genre.where("genre = ?", info[3]).first
+  name = info[3]
+  name = "N/A" if name == ""
+  if Genre.where("genre = ?", name).count != 0
+    genre = Genre.where("genre = ?", name).first
   else
-    genre = Genre.create({:genre => info[3], :level => 1})
+    genre = Genre.create({:genre => name, :level => 1})
   end
   p "zanr: #{genre.genre}"
   #====================>  Povezovalne tabele
   ag = AuthorsGenres.create({:author_id => author.id, :genre_id => genre.id})
   bg = BooksGenres.create({:genre_id => genre.id, :book_id => book.id})
   #====================>  Zanr 2
-  if Genre.where("genre = ?", info[4]).count != 0
-    genre = Genre.where("genre = ?", info[4]).first
+  name = info[4]
+  name = "N/A" if name == ""
+  if Genre.where("genre = ?", name).count != 0
+    genre = Genre.where("genre = ?", name).first
   else
-    genre = Genre.create({:genre => info[4], :level => 2})
+    genre = Genre.create({:genre => name, :level => 2})
   end
   p "zanr: #{genre.genre}"
   #====================>  Povezovalne tabele

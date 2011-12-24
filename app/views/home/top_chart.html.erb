@@ -1,1 +1,25 @@
-<%= debug @books %>
+<div class="genre">
+	<h1>
+		Lestvica najbolj prodajanih knjig
+		<button class="btn primary show_chart">Graf</button>
+	</h1>
+	<div id="books_chart" class="top_chart"></div>
+	<table class="bordered-table sort zebra-striped">
+	  <thead>
+	    <tr>
+	      <th>Knjiga</th>
+	      <th>Prodaja</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+			<% @books.each do |book| %>
+		
+				<tr>
+	        <td><%= book.title %></td>
+	        <td><%= (book.sales.to_f / @normal.to_f * 100).round(3) %></td>
+	      </tr>
+				<% end %>
+	
+	  </tbody>
+	</table>
+	</div>

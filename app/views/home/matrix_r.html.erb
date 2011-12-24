@@ -1,0 +1,21 @@
+
+<div class="genre">
+	<h1>R Matrika</h1>
+	<div id="books_chart" class="top_chart"></div>
+	<table class="bordered-table sort zebra-striped">
+	  <tbody>
+		
+			<% @matrix.each_with_index do |row,index| %>
+				<tr>
+					<% if index == 0%>
+						<td>/</td>
+					<% end %>
+					<% row.each do |item|%>
+						<td><%= item %></td>
+					<% end %>
+				</tr>
+			<% end %>
+  
+	  </tbody>
+	</table>
+	</div>

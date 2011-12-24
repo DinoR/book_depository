@@ -93,7 +93,13 @@
 				<%= link_to "Prodaja po žanru 2", :controller => "home", :action => "sub_sales" %>
 			</li>
 			<li class="<%= "active" if params[:action] == 'genre_chart' %>">
-				<%= link_to "Top Lestvica po Žanru", :controller => "home", :action => "genre_chart", :genre => 2 %>
+				<%= link_to "Top Lestvica po Žanru", :controller => "home", :action => "genre_chart" %>
+			</li>
+			<li class="<%= "active" if params[:action] == 'top_chart' %>">
+				<%= link_to "Top Lestvica", :controller => "home", :action => "top_chart" %>
+			</li>
+			<li class="<%= "active" if params[:action] == 'matrix_r' %>">
+				<%= link_to "R Matrika", :controller => "home", :action => "matrix_r" %>
 			</li>
 		</ul>
 		<%= yield %>
