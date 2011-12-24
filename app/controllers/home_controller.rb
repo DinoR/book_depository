@@ -54,7 +54,7 @@ class HomeController < ApplicationController
       end
       @sales_count.push(sales)
     end
-    
+
     @matrix.unshift(@years_range)
     @matrix.push(@sales_count)
     
