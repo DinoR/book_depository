@@ -7,9 +7,7 @@
 		
 			<% @matrix.each_with_index do |row,index| %>
 				<tr>
-					<% if index == 0%>
-						<td>/</td>
-					<% end %>
+
 					<% row.each do |item|%>
 						<td><%= item %></td>
 					<% end %>
@@ -18,4 +16,4 @@
   
 	  </tbody>
 	</table>
-	</div>
+</div>
