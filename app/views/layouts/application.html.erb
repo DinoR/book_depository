@@ -7,7 +7,7 @@
   <%= javascript_include_tag "application"%>
 
   <%= csrf_meta_tags %>
-
+	<link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/js/google-code-prettify/prettify.css" type="text/css" media="screen" title="no title" charset="utf-8">
 	<script type="text/javascript">
 
 	  var _gaq = _gaq || [];
@@ -34,7 +34,7 @@
         text-align: center; /* center align it with the container */
       }
       .container {
-        width: 820px; /* downsize our container to make the content feel a bit tighter and more cohesive. NOTE: this removes two full columns from the grid, meaning you only go to 14 columns and not 16. */
+        width: 920px; /* downsize our container to make the content feel a bit tighter and more cohesive. NOTE: this removes two full columns from the grid, meaning you only go to 14 columns and not 16. */
       }
 
       /* The white background content wrapper */
@@ -72,6 +72,9 @@
       .topbar .btn {
         border: 0;
       }
+			.prettyprint{
+				margin-top:10px;
+			}
 
     </style>
     
@@ -113,6 +116,9 @@
 			</li>
 			<li class="<%= "active" if params[:action] == 'matrix_r' %>">
 				<%= link_to "R Matrika", :controller => "home", :action => "matrix_r" %>
+			</li>
+			<li class="<%= "active" if params[:action] == 'matlab' %>">
+				<%= link_to "Matlab", :controller => "home", :action => "matlab" %>
 			</li>
 		</ul>
 		<%= yield %>

@@ -33,6 +33,20 @@ class HomeController < ApplicationController
   end
   
   def matrix_r
+    @matrix = get_r_matrix
+  end
+  
+  def matlab
+    @matrix = get_r_matrix
+    @matrix_without_titles= @matrix
+    @matrix_without_titles.each { |genre| genre.shift}
+  end
+  
+  
+  private
+  
+  
+  def get_r_matrix
     @matrix = []
     @years_range =  Array(Book.where('year != 0').minimum("year")..Book.maximum("year"))
     @years_range.unshift(0)
@@ -54,16 +68,7 @@ class HomeController < ApplicationController
       end
       @sales_count.push(sales)
     end
-    @matrix_without_titles= @matrix
-    @matrix_without_titles.each { |genre| genre.shift}
-    @matrix_without_titles = Matrix[@matrix_without_titles]
-    render :text => @matrix_without_titles
-    
-    #@matrix.unshift(@years_range)
-    #@matrix.push(@sales_count)
-    
-    
-    
+    return @matrix
   end
   
 end

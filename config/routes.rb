@@ -6,6 +6,7 @@ BookDepository::Application.routes.draw do
   get 'home/genre_chart'
   get 'home/top_chart'
   get 'home/matrix_r'
+  get 'home/matlab'
   root :to => "home#index"
   # The priority is based upon order of creation:
   # first created -> highest priority.

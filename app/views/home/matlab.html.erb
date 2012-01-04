@@ -1,0 +1,20 @@
+<h2>Matlab</h2>
+<span class="label notice">Notice</span><span>&nbsp;Za dokončno rešitev uporabimo skripto napisano za Matlab</span>
+
+<pre class="prettyprint">
+format long
+R = [
+<% @matrix.each do |row| %>
+	[<% row.each do |element| %><%= element %>&nbsp;<% end %>];
+<% end %>
+]
+[E, s, L] = princomp(R);
+Ev = E(:,1:2)
+X = R * Ev;
+disp('Matrika X');
+disp(X);
+%X = X*1.5;
+x = X(:,1);
+y = X(:,2);
+scatter(x,y);
+</pre>
