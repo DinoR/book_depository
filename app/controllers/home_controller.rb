@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
   def index
     @authors  = Author.all
-    @avrage  = Author.all.count / Genre.all.count
+    @avrage  = Author.all.count / Genre.where("genre != ?","N/A").count.to_f
   end
   
   def genre
@@ -54,7 +54,11 @@ class HomeController < ApplicationController
       end
       @sales_count.push(sales)
     end
-
+    @matrix_without_titles= @matrix
+    @matrix_without_titles.each { |genre| genre.shift}
+    @matrix_without_titles = Matrix[@matrix_without_titles]
+    render :text => @matrix_without_titles
+    
     #@matrix.unshift(@years_range)
     #@matrix.push(@sales_count)
     
