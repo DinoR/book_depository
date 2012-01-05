@@ -1,0 +1,49 @@
+<div class="genre">
+	<h1>
+		Vektorja X & Y
+		<button class="btn primary scatter">Graf</button>
+	</h1>
+	<span class="label notice">Notice</span><span>&nbsp;Združimo žanre v skupine 8,4,7 in (1,2,3,5,7)</span><br />
+	
+	<div id="scatter_mess" class="scatter_chart top_chart"></div>
+	<table class="bordered-table sort zebra-striped">
+	  <tbody>
+					<tr><td>0.556742410226777</td><td>-0.018155195082711</td></tr>
+					<tr><td>0.348820064517035</td><td> 0.024637886687975</td></tr>
+					<tr><td>0.204945389620255</td><td> 0.005261518365563</td></tr>
+					<tr><td>4.043868458629802</td><td>-0.143824819356169</td></tr>
+					<tr><td>0.018209202767841</td><td> 0.001859319040099</td></tr>
+					<tr><td>0.323190292423859</td><td> 0.081439685137301</td></tr>
+					<tr><td>0.047714646028814</td><td> 0.245046832945221</td></tr>
+					<tr><td>5.543490464214385</td><td> 0.196265227737278</td></tr>			
+	
+	  </tbody>
+	</table>
+</div>
+<% @groups.each_with_index do |group,index|%>
+<div class="genre">
+	<h1>
+		<%= "Prodaja po grupi #{index+1}"%>
+		<button class="btn primary show_chart">Graf</button>
+	</h1>
+	<div id="prodaja_zanri_<%= index+1 %>" class="top_chart"></div>
+	<table class="bordered-table sort zebra-striped">
+	  <thead>
+	    <tr>
+	      <th>Knjiga</th>
+				<th>Letnik</th>
+	      <th>Prodaja</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+			<% group.each do |book| %>
+				<tr>
+	        <td><%= book.title  %></td>
+	        <td><%= book.year  %></td>
+	        <td><%= book.sales %></td>
+	      </tr>
+			<% end %>
+	  </tbody>
+	</table>
+</div>
+<% end %>

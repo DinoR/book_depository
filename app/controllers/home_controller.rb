@@ -42,6 +42,15 @@ class HomeController < ApplicationController
     @matrix_without_titles.each { |genre| genre.shift}
   end
   
+  def grouping
+    @one = Genre.find(2533).books
+    @three = Genre.find(2531).books
+    @two = Genre.find(2524).books
+    @four_genres = Genre.find(2518,2520,2523,2530,2531)
+    @four = []
+    @four_genres.each {|genre| @four.push(genre.books)}
+    @groups = [@one,@two,@three,@four.flatten]
+  end
   
   private
   

@@ -103,13 +103,13 @@
 				<%= link_to "Žanri", :controller => "home", :action => "genre" %>
 			</li>
 			<li class="<%= "active" if params[:action] == 'sales' %>">
-				<%= link_to "Prodaja po žanru 1", :controller => "home", :action => "sales" %>
+				<%= link_to "Prodaja Ž1", :controller => "home", :action => "sales" %>
 			</li>
 			<li class="<%= "active" if params[:action] == 'sub_sales' %>">
-				<%= link_to "Prodaja po žanru 2", :controller => "home", :action => "sub_sales" %>
+				<%= link_to "Prodaja Ž2", :controller => "home", :action => "sub_sales" %>
 			</li>
 			<li class="<%= "active" if params[:action] == 'genre_chart' %>">
-				<%= link_to "Top Lestvica po Žanru", :controller => "home", :action => "genre_chart" %>
+				<%= link_to "Top Žanr", :controller => "home", :action => "genre_chart" %>
 			</li>
 			<li class="<%= "active" if params[:action] == 'top_chart' %>">
 				<%= link_to "Top Lestvica", :controller => "home", :action => "top_chart" %>
@@ -119,6 +119,9 @@
 			</li>
 			<li class="<%= "active" if params[:action] == 'matlab' %>">
 				<%= link_to "Matlab", :controller => "home", :action => "matlab" %>
+			</li>
+			<li class="<%= "active" if params[:action] == 'grouping' %>">
+				<%= link_to "Grupe", :controller => "home", :action => "grouping" %>
 			</li>
 		</ul>
 		<%= yield %>

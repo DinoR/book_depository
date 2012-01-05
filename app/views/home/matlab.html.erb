@@ -5,7 +5,7 @@
 format long
 R = [
 <% @matrix.each do |row| %>
-	[<% row.each do |element| %><%= element %>&nbsp;<% end %>];
+ [<% row.each do |element| %><%= element %>&nbsp;<% end %>];
 <% end %>
 ]
 [E, s, L] = princomp(R);
