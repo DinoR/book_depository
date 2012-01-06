@@ -10,7 +10,7 @@
 		<% @authors.each do |author| %>
 			<tr>
         <td><%= author.name  %></td>
-        <td><%= author.genres.count %></td>
+        <td><%= author.genres.where("genre != ?", "N/A").count %></td>
 				<td><%= @avrage %></td>
       </tr>
 		<% end %>

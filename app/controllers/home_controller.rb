@@ -1,7 +1,6 @@
 class HomeController < ApplicationController
   def index
     @authors  = Author.all
-    #@avrage  = Author.all.count / Genre.where("genre != ?","N/A").count.to_f
     @avrage = 0.0
     @authors.each {|author| @avrage += author.genres.where("genre != ?", "N/A").count }
     @avrage = @avrage.to_f/@authors.count.to_f
@@ -9,7 +8,7 @@ class HomeController < ApplicationController
   
   def genre
     @genres = Genre.all
-    @avrage  = Book.all.count.to_f / Genre.all.count.to_f 
+    @avrage  = Book.all.count.to_f / Genre.where("genre != ?", "N/A").count.to_f
   end
   
   def sales
